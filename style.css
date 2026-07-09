@@ -27,14 +27,16 @@ nav a{
 }
 
 .hero{
-    min-height:450px;
+    min-height:500px;
     padding:100px 20px;
     text-align:center;
     background:
-    linear-gradient(rgba(0,0,0,.65),rgba(0,0,0,.85)),
-    url("https://images.unsplash.com/photo-1578632767115-351597cf2477");
+        linear-gradient(rgba(0,0,0,.55), rgba(0,0,0,.80)),
+        url("file_0000000019207208aaed89c4327ecba2.png");
     background-size:cover;
     background-position:center;
+    background-repeat:no-repeat;
+}
 }
 }
 
