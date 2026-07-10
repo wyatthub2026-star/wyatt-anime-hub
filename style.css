@@ -131,3 +131,67 @@ nav a:hover{
     box-shadow:0 0 25px #ff7a00;
     transition:.3s;
 }
+/* Featured Anime Cards */
+.anime-cards{
+    padding:60px 20px;
+    text-align:center;
+    background:#111;
+}
+
+.cards{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:20px;
+}
+
+.card{
+    background:#1a1a1a;
+    border:2px solid orange;
+    border-radius:15px;
+    width:280px;
+    padding:15px;
+    box-shadow:0 0 15px rgba(255,140,0,.5);
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 0 25px orange;
+}
+
+.card img{
+    width:100%;
+    border-radius:10px;
+}
+
+.card h3{
+    color:orange;
+    margin-top:15px;
+}
+
+.card p{
+    color:#ddd;
+}
+
+/* Trending Videos */
+.videos{
+    padding:60px 20px;
+    text-align:center;
+}
+
+.video-box{
+    display:inline-block;
+    width:280px;
+    margin:15px;
+    padding:15px;
+    background:#1a1a1a;
+    border:2px solid orange;
+    border-radius:15px;
+    box-shadow:0 0 15px rgba(255,140,0,.5);
+}
+
+.anime-image{
+    width:100%;
+    border-radius:10px;
+}
