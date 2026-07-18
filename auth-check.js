@@ -3,6 +3,6 @@ import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.0.0/fi
 
 onAuthStateChanged(auth, (user) => {
   if (!user) {
-    window.location.href = "members.html";
+    window.location.href = "login.html";
   }
 });
