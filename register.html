@@ -39,7 +39,7 @@ form.addEventListener("submit", async (e) => {
 
   try {
     const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-    await setDoc(doc(db, "members", userCredential.user.uid), {
+    await setDoc(doc(db, "users", userCredential.user.uid), {
   email: email,
   username: document.getElementById("username").value,
   status: "pending"
