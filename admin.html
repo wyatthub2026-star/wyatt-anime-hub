@@ -19,21 +19,21 @@ import { db } from "./firebase.js";
 
   const usersDiv = document.getElementById("users");
 
-const snapshot = await getDocs(collection(db, "members"));
+const snapshot = await getDocs(collection(db, "users"));
 
 snapshot.forEach((doc) => {
   const user = doc.data();
 
   usersDiv.innerHTML += `
     <p>
-      ${user.username} - ${user.status}
+      ${user.email} - ${user.status}
       <button onclick="approveUser('${doc.id}')">Approve</button>
     </p>
   `;
 });
 
 window.approveUser = async function(id) {
-  await updateDoc(doc(db, "members", id), {
+  await updateDoc(doc(db, "users", id), {
     status: "approved"
   });
 
