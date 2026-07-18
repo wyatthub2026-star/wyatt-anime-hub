@@ -16,8 +16,10 @@
 <script type="module">
 import { auth } from "./firebase.js";
 import { signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
+import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
 
 const form = document.getElementById("loginForm");
+  const db = getFirestore();
 
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
@@ -26,8 +28,16 @@ form.addEventListener("submit", async (e) => {
   const password = document.getElementById("password").value;
 
   try {
-    await signInWithEmailAndPassword(auth, email, password);
+    
+const userCredential = await signInWithEmailAndPassword(auth, email, password);
 
+const docSnap = await getDoc(doc(db, "members", userCredential.user.uid));
+
+if (!docSnap.exists() || docSnap.data().status !== "approved") {
+  document.getElementById("message").innerText =
+    "Ang imong account wala pa ma-approve sa admin.";
+  return;
+}
     alert("Login successful!");
     window.location.href = "index.html";
 
