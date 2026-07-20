@@ -71,8 +71,8 @@ nav a:hover{
     color:#fff;
     text-decoration:none;
     border-radius:20px;
-    padding:3px 5px;
-    font-size:7px;
+    padding:2px 3px;
+    font-size:6px;
     white-space:nowrap;
 }
 
@@ -130,9 +130,12 @@ input{
     background:#1b1b1b;
     border:2px solid orange;
     border-radius:12px;
-    padding:5px;
+    padding:3px;
     text-align:center;
     box-shadow:0 0 10px orange;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
 }
 
 .anime-image{
