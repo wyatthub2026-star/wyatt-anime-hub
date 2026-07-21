@@ -2,26 +2,140 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Action - Wyatt Anime Hub</title>
+<title>Admin Approval - Wyatt Anime Hub</title>
 <link rel="stylesheet" href="style.css">
 </head>
 
 <body style="background:#111;color:white;font-family:Arial;padding:20px;">
 
-<h1>🔥 Action</h1>
-<p>Pilia ang episode nga gusto nimo tan-awon.</p>
+<h1>👑 Admin Approval</h1>
 
-<a href="action1.html" style="display:block;background:#ff8c00;color:white;padding:15px;margin:10px 0;text-decoration:none;border-radius:10px;">
-🎬 Action Episode 1
-</a>
+<p id="message">Checking admin access...</p>
 
-<a href="action2.html" style="display:block;background:#ff8c00;color:white;padding:15px;margin:10px 0;text-decoration:none;border-radius:10px;">
-🎬 Action Episode 2
-</a>
+<div id="users"></div>
 
-<a href="action3.html" style="display:block;background:#ff8c00;color:white;padding:15px;margin:10px 0;text-decoration:none;border-radius:10px;">
-🎬 Action Episode 3
-</a>
+<script type="module">
+
+import { auth, db } from "./firebase.js";
+
+import {
+  onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
+
+import {
+  collection,
+  getDocs,
+  doc,
+  updateDoc,
+  getDoc
+} from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
+
+
+const usersDiv = document.getElementById("users");
+const message = document.getElementById("message");
+
+
+onAuthStateChanged(auth, async (user) => {
+
+  if (!user) {
+    window.location.href = "login.html";
+    return;
+  }
+
+  try {
+
+    // Check current user's Firestore account
+    const adminDoc = await getDoc(
+      doc(db, "users", user.uid)
+    );
+
+    if (!adminDoc.exists() ||
+        adminDoc.data().role !== "admin") {
+
+      message.innerText = "Access Denied. Admin only.";
+      return;
+    }
+
+    message.innerText = "Admin access granted.";
+
+    // Get all users
+    const snapshot = await getDocs(
+      collection(db, "users")
+    );
+
+    usersDiv.innerHTML = "";
+
+    snapshot.forEach((userDoc) => {
+
+      const data = userDoc.data();
+
+      const div = document.createElement("div");
+
+      div.style.background = "#222";
+      div.style.padding = "15px";
+      div.style.margin = "10px 0";
+      div.style.borderRadius = "10px";
+
+      div.innerHTML = `
+        <b>Username:</b> ${data.username || "No username"}<br>
+        <b>Email:</b> ${data.email || "No email"}<br>
+        <b>Status:</b> ${data.status || "No status"}<br>
+        <b>Role:</b> ${data.role || "user"}<br><br>
+      `;
+
+      if (data.status === "pending") {
+
+        const approveBtn = document.createElement("button");
+
+        approveBtn.innerText = "✅ Approve";
+
+        approveBtn.style.padding = "10px";
+        approveBtn.style.background = "green";
+        approveBtn.style.color = "white";
+        approveBtn.style.border = "none";
+        approveBtn.style.borderRadius = "5px";
+
+        approveBtn.onclick = async () => {
+
+          try {
+
+            await updateDoc(
+              doc(db, "users", userDoc.id),
+              {
+                status: "approved"
+              }
+            );
+
+            alert("User approved!");
+
+            location.reload();
+
+          } catch (error) {
+
+            alert("Error: " + error.message);
+
+          }
+
+        };
+
+        div.appendChild(approveBtn);
+
+      }
+
+      usersDiv.appendChild(div);
+
+    });
+
+  } catch (error) {
+
+    message.innerText =
+      "Error: " + error.message;
+
+  }
+
+});
+
+</script>
 
 </body>
 </html>
