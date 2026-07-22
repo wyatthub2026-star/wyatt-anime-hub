@@ -21,17 +21,14 @@
 
     h1 {
         color: #ff7a00;
-        margin-bottom: 20px;
     }
 
     .movie-poster {
         width: 100%;
         max-width: 500px;
-        height: auto;
         border-radius: 12px;
         display: block;
-        margin: 0 auto 20px;
-        box-shadow: 0 0 20px rgba(255, 122, 0, 0.4);
+        margin: 20px auto;
     }
 
     .info-box {
@@ -45,44 +42,12 @@
 
     .info-box h2 {
         color: #ff7a00;
-        margin-top: 0;
     }
 
-    .cast-list {
-        padding-left: 20px;
-    }
-
-    .trailer {
-        margin: 25px 0;
-    }
-
-    .trailer h2 {
-        color: #ff7a00;
-    }
-
-    .video-wrapper {
-        position: relative;
-        width: 100%;
-        padding-bottom: 56.25%;
-        height: 0;
-        overflow: hidden;
-        border-radius: 12px;
-        background: #000;
-    }
-
-    .video-wrapper iframe {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        border: none;
-    }
-
-    .back-button {
+    .btn {
         display: inline-block;
-        margin: 10px 5px;
         padding: 12px 25px;
+        margin: 10px 5px;
         background: #ff7a00;
         color: white;
         text-decoration: none;
@@ -90,7 +55,7 @@
         font-weight: bold;
     }
 
-    .back-button:hover {
+    .btn:hover {
         background: #e56700;
     }
 </style>
@@ -99,45 +64,30 @@
 
     <h1>🌊 Moana</h1>
 
-    <!-- Movie Poster -->
     <img
         src="file_0000000019207208aaed89c4327ecba2.png"
         class="movie-poster"
         alt="Moana"
     >
 
-    <!-- Description -->
     <div class="info-box">
 
         <h2>📖 Description</h2>
 
         <p>
-            Moana follows a brave young woman who sets out on an
-            incredible journey across the ocean. Along the way,
+            Moana follows a brave young woman who sets out on
+            an incredible journey across the ocean. Along the way,
             she discovers courage, friendship, and the importance
             of her connection to her people and the sea.
         </p>
 
     </div>
 
-    <!-- Movie Information -->
-    <div class="info-box">
-
-        <h2>🎬 Movie Information</h2>
-
-        <p><strong>Title:</strong> Moana</p>
-        <p><strong>Genre:</strong> Adventure • Family • Fantasy</p>
-        <p><strong>Quality:</strong> HD</p>
-        <p><strong>Category:</strong> Movies</p>
-
-    </div>
-
-    <!-- Cast -->
     <div class="info-box">
 
         <h2>🎭 Cast</h2>
 
-        <ul class="cast-list">
+        <ul>
             <li>Catherine Lagaʻaia as Moana</li>
             <li>Dwayne Johnson as Maui</li>
             <li>John Tui as Chief Tui</li>
@@ -147,37 +97,22 @@
 
     </div>
 
-    <!-- Official Trailer -->
-    <div class="trailer">
-
-        <h2>▶️ Official Trailer</h2>
-
-        <div class="video-wrapper">
-
-            <iframe
-                src="https://www.youtube.com/embed/VIDEO_ID"
-                title="Moana Official Trailer"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen>
-            </iframe>
-
-        </div>
-
-    </div>
-
-    <!-- Navigation Buttons -->
-
-    <a href="video.html" class="back-button">
-        🔙 Back to Videos
+    <a
+        class="btn"
+        href="YOUR_AUTHORIZED_STREAMING_LINK"
+        target="_blank"
+        rel="noopener noreferrer">
+        🎬 Watch Now
     </a>
 
-    <a href="index.html" class="back-button">
-        🏠 Home
+    <a
+        class="btn"
+        href="video.html">
+        🔙 Back to Videos
     </a>
 
 </div>
 
-<!-- Member Access Protection -->
 <script type="module" src="auth-check.js"></script>
 
 </body></html>
